@@ -1,62 +1,63 @@
-import * as siteConfig from './content/site/info.json'
-
 export default {
-  // Target (https://go.nuxtjs.dev/config-target)
-  target: 'static',
-
-  // Environment variables: https://nuxtjs.org/api/configuration-env/
-  env: {
-    url:
-      process.env.NODE_ENV === 'production'
-        ? process.env.URL || 'http://createADotEnvFileAndSetURL'
-        : 'http://localhost:3000',
-    lang: 'en-US',
-  },
-
-  // Global page headers (https://go.nuxtjs.dev/config-head)
+  // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: siteConfig.sitename || process.env.npm_package_name || '',
+    title: 'Bonx - Vue Js Gaming Website Template with Nuxt Js',
+    htmlAttrs: {
+      lang: 'en'
+    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      {
-        hid: 'description',
-        name: 'description',
-        content:
-          siteConfig.sitedescription ||
-          process.env.npm_package_description ||
-          '',
-      },
+      { hid: 'description', name: 'description', content: '' },
+      { name: 'format-detection', content: 'telephone=no' }
     ],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+    ]
   },
 
-  generate: {
-    fallback: true,
-    exclude: [
-      /^\/admin/, // path starts with /admin
-    ],
-  },
+  target: 'static',
 
-  // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: ['@/assets/css/main.css'],
+  // Global CSS: https://go.nuxtjs.dev/config-css
+  css: [
+    '~/assets/css/icofont.min.css',
+    '~/assets/css/swiper.css'
+  ],
 
-  // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [],
+  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
+  plugins: [
+    // '~/plugins/vue-awesome-swiper.js',
+    { 
+      src: '~/plugins/vue-awesome-swiper.js', 
+      ssr: false
+    },
+    '~/plugins/directive.client.js',
+    { 
+        src: '~/plugins/vue-backtotop.js', 
+        ssr: false
+    },
+    { 
+        src: '~/plugins/vue-js-modal', 
+        mode: "client"
+    }
+  ],
 
-  // Auto import components (https://go.nuxtjs.dev/config-components)
+  // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
-  // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
+
+  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    ['@nuxtjs/moment', { /* module options */ }]
   ],
 
-  // Modules (https://go.nuxtjs.dev/config-modules)
+  // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/content
-    '@nuxt/content',
   ],
+
+  // Build Configuration: https://go.nuxtjs.dev/config-build
+  build: {
+  }
 }
