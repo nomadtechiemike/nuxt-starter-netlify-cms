@@ -12,7 +12,7 @@
     "@nuxtjs/moment": "^1.6.1",
     "core-js": "^3.15.1",
     "nuxt": "^2.15.7",
-    "postcss": "^8.3.11",
+    "postcss": "^8.4.12",
     "swiper": "^5.4.5",
     "tailwindcss-pseudo": "^1.0.3",
     "vue-awesome-swiper": "^4.1.1",
